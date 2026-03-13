@@ -1,0 +1,118 @@
+.wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 540px;
+}
+
+.inputRow {
+  display: flex;
+  align-items: center;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-xl);
+  padding: 0 1rem;
+  gap: 0.6rem;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  backdrop-filter: blur(12px);
+}
+
+.inputRow:focus-within {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.searchIcon {
+  font-size: 1rem;
+  opacity: 0.6;
+  flex-shrink: 0;
+}
+
+.input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 0.85rem 0;
+}
+
+.input::placeholder { color: var(--text-muted); }
+.input:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.clearBtn {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1.3rem;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 0.2rem;
+  transition: color var(--transition-fast);
+  flex-shrink: 0;
+}
+.clearBtn:hover { color: var(--text-primary); }
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: #1a1e2f;
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  z-index: 200;
+  list-style: none;
+  box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+  animation: slideUp 0.15s ease both;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.dropdownItem:hover,
+.dropdownItem.active {
+  background: rgba(108,99,255,0.15);
+}
+
+.dropdownItem.inTeam {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.miniSprite {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  image-rendering: pixelated;
+  flex-shrink: 0;
+}
+
+.pokeName {
+  flex: 1;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: capitalize;
+}
+
+.typePills {
+  display: flex;
+  gap: 4px;
+}
+
+.inTeamLabel {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 99px;
+  padding: 1px 6px;
+}

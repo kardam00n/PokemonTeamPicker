@@ -1,0 +1,88 @@
+{
+  "normal": [],
+  "fire": [
+    "bug",
+    "steel",
+    "grass",
+    "ice"
+  ],
+  "water": [
+    "ground",
+    "rock",
+    "fire"
+  ],
+  "electric": [
+    "flying",
+    "water"
+  ],
+  "grass": [
+    "ground",
+    "rock",
+    "water"
+  ],
+  "ice": [
+    "flying",
+    "ground",
+    "grass",
+    "dragon"
+  ],
+  "fighting": [
+    "normal",
+    "rock",
+    "steel",
+    "ice",
+    "dark"
+  ],
+  "poison": [
+    "grass",
+    "fairy"
+  ],
+  "ground": [
+    "poison",
+    "rock",
+    "steel",
+    "fire",
+    "electric"
+  ],
+  "flying": [
+    "fighting",
+    "bug",
+    "grass"
+  ],
+  "psychic": [
+    "fighting",
+    "poison"
+  ],
+  "bug": [
+    "grass",
+    "psychic",
+    "dark"
+  ],
+  "rock": [
+    "flying",
+    "bug",
+    "fire",
+    "ice"
+  ],
+  "ghost": [
+    "ghost",
+    "psychic"
+  ],
+  "dragon": [
+    "dragon"
+  ],
+  "dark": [
+    "ghost",
+    "psychic"
+  ],
+  "steel": [
+    "rock",
+    "ice",
+    "fairy"
+  ],
+  "fairy": [
+    "fighting",
+    "dragon",
+    "dark"
+  ]
+}

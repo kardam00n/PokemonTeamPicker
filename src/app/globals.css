@@ -1,0 +1,186 @@
+/* ─── Google Fonts ─────────────────────────────────────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ─── Reset ─────────────────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ─── Pokémon Type Colours ──────────────────────────────────────────────────── */
+:root {
+  --type-normal:   #9A9A6A;
+  --type-fire:     #E76232;
+  --type-water:    #3C98D0;
+  --type-electric: #E2C02A;
+  --type-grass:    #5CA95C;
+  --type-ice:      #62B8C0;
+  --type-fighting: #C03028;
+  --type-poison:   #9840A0;
+  --type-ground:   #D0AE54;
+  --type-flying:   #8898E0;
+  --type-psychic:  #F85888;
+  --type-bug:      #90A81A;
+  --type-rock:     #B8A038;
+  --type-ghost:    #705898;
+  --type-dragon:   #5060E0;
+  --type-dark:     #504838;
+  --type-steel:    #B8B8D0;
+  --type-fairy:    #F0A0C0;
+
+  /* ─── Global Palette ──────────────────────────────────────────────────────── */
+  --bg-base:       #0f111a;
+  --bg-surface:    #181c2b;
+  --bg-glass:      rgba(255,255,255,0.06);
+  --bg-glass-hover:rgba(255,255,255,0.10);
+  --border-glass:  rgba(255,255,255,0.10);
+  --text-primary:  #f0f2ff;
+  --text-secondary:#8b92b8;
+  --text-muted:    #555e80;
+  --accent:        #6c63ff;
+  --accent-glow:   rgba(108,99,255,0.35);
+  --danger:        #e05f6c;
+
+  /* ─── Spacing / Radii ─────────────────────────────────────────────────────── */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  /* ─── Transitions ─────────────────────────────────────────────────────────── */
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.25s ease;
+  --transition-slow: 0.4s ease;
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────────── */
+html { font-size: 16px; scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  min-height: 100dvh;
+  line-height: 1.6;
+  /* Ambient background gradient */
+  background-image:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(108,99,255,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 110%, rgba(60,152,208,0.12) 0%, transparent 60%);
+}
+
+/* ─── Scrollbar (Webkit) ─────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
+
+/* ─── Typography ─────────────────────────────────────────────────────────────── */
+h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; }
+h2 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); font-weight: 700; letter-spacing: -0.02em; }
+h3 { font-size: 1rem; font-weight: 600; }
+
+/* ─── Glass Card ─────────────────────────────────────────────────────────────── */
+.glass-card {
+  background: var(--bg-glass);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+}
+
+/* ─── Type Badge ─────────────────────────────────────────────────────────────── */
+.type-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px 10px;
+  border-radius: 99px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+}
+
+/* ─── Animations ─────────────────────────────────────────────────────────────── */
+@keyframes fadeIn   { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp  { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes scaleIn  { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+@keyframes pulse    { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.04); } }
+@keyframes shimmer  {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+.animate-fade-in  { animation: fadeIn  var(--transition-base) both; }
+.animate-slide-up { animation: slideUp var(--transition-base) both; }
+.animate-scale-in { animation: scaleIn var(--transition-fast) both; }
+
+/* ─── Focus Visible ──────────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ─── Selection ──────────────────────────────────────────────────────────────── */
+::selection { background: var(--accent-glow); color: var(--text-primary); }
+
+/* ─── App Shell (from layout) ────────────────────────────────────────────────── */
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(15,17,26,0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  padding: 0 1.5rem;
+}
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 0;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.logo-icon {
+  font-size: 1.6rem;
+  filter: drop-shadow(0 0 8px #f5c518);
+}
+.logo-text {
+  font-size: 1.25rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff 30%, #a89ef0);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.logo-tagline {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  font-weight: 400;
+  border-left: 1px solid rgba(255,255,255,0.12);
+  padding-left: 1rem;
+  margin-left: 0.2rem;
+}
+.app-main {
+  flex: 1;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 2rem 1.5rem 4rem;
+}
+@media (max-width: 600px) {
+  .logo-tagline { display: none; }
+  .app-main { padding: 1.5rem 1rem 3rem; }
+}

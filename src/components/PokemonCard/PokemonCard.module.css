@@ -1,0 +1,119 @@
+.card {
+  position: relative;
+  background: var(--bg-glass);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg);
+  padding: 1rem 0.75rem 0.85rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  text-align: center;
+  backdrop-filter: blur(12px);
+  transition: transform var(--transition-base), box-shadow var(--transition-base),
+              border-color var(--transition-base);
+  animation: scaleIn 0.2s ease both;
+  /* Dynamic glow from type color */
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 50% at 50% 0%,
+    color-mix(in srgb, var(--type-color) 30%, transparent),
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 12px 36px rgba(0,0,0,0.4),
+              0 0 24px color-mix(in srgb, var(--type-color) 25%, transparent);
+  border-color: color-mix(in srgb, var(--type-color) 50%, rgba(255,255,255,0.15));
+}
+
+.removeBtn {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 99px;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), color var(--transition-fast);
+  z-index: 2;
+}
+.removeBtn:hover {
+  background: var(--danger);
+  border-color: transparent;
+  color: white;
+}
+
+.spriteWrapper {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  z-index: 1;
+}
+
+.sprite {
+  object-fit: contain;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.5));
+  transition: transform var(--transition-base);
+}
+
+.card:hover .sprite {
+  transform: translateY(-4px) scale(1.06);
+}
+
+.spritePlaceholder {
+  width: 88px;
+  height: 88px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--text-muted);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  z-index: 1;
+}
+
+.pokeId {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.pokeName {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  text-transform: capitalize;
+  line-height: 1.2;
+}
+
+.types {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
