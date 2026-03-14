@@ -1,0 +1,9 @@
+services:
+  pokemon-team-picker:
+    image: ghcr.io/kardam00n/pokemonteampicker:latest
+    container_name: pokemon-team-picker
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
