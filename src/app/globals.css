@@ -25,7 +25,7 @@
   --type-steel:    #B8B8D0;
   --type-fairy:    #F0A0C0;
 
-  /* ─── Global Palette ──────────────────────────────────────────────────────── */
+  /* ─── Global Palette (dark – default) ───────────────────────────────────── */
   --bg-base:       #0f111a;
   --bg-surface:    #181c2b;
   --bg-glass:      rgba(255,255,255,0.06);
@@ -37,6 +37,13 @@
   --accent:        #6c63ff;
   --accent-glow:   rgba(108,99,255,0.35);
   --danger:        #e05f6c;
+  --header-bg:     rgba(15,17,26,0.75);
+  --header-border: rgba(255,255,255,0.07);
+  --scrollbar-thumb:        rgba(255,255,255,0.15);
+  --scrollbar-thumb-hover:  rgba(255,255,255,0.25);
+  --body-gradient-a: rgba(108,99,255,0.18);
+  --body-gradient-b: rgba(60,152,208,0.12);
+  --logo-gradient: linear-gradient(135deg, #fff 30%, #a89ef0);
 
   /* ─── Spacing / Radii ─────────────────────────────────────────────────────── */
   --radius-sm: 8px;
@@ -50,6 +57,35 @@
   --transition-slow: 0.4s ease;
 }
 
+/* ─── Light-Mode Overrides ───────────────────────────────────────────────────── */
+[data-theme="light"] {
+  --bg-base:       #f0f2ff;
+  --bg-surface:    #ffffff;
+  --bg-glass:      rgba(255,255,255,0.65);
+  --bg-glass-hover:rgba(255,255,255,0.85);
+  --border-glass:  rgba(108,99,255,0.18);
+  --text-primary:  #111320;
+  --text-secondary:#4a4f72;
+  --text-muted:    #8b92b8;
+  --accent:        #5b52e8;
+  --accent-glow:   rgba(91,82,232,0.25);
+  --danger:        #c93a46;
+  --header-bg:     rgba(240,242,255,0.80);
+  --header-border: rgba(108,99,255,0.15);
+  --scrollbar-thumb:       rgba(108,99,255,0.25);
+  --scrollbar-thumb-hover: rgba(108,99,255,0.45);
+  --body-gradient-a: rgba(108,99,255,0.10);
+  --body-gradient-b: rgba(60,152,208,0.07);
+  --logo-gradient: linear-gradient(135deg, #111320 30%, #5b52e8);
+}
+
+/* ─── Smooth theme transitions ───────────────────────────────────────────────── */
+html {
+  transition:
+    background-color var(--transition-base),
+    color var(--transition-base);
+}
+
 /* ─── Base ───────────────────────────────────────────────────────────────────── */
 html { font-size: 16px; scroll-behavior: smooth; }
 
@@ -61,15 +97,15 @@ body {
   line-height: 1.6;
   /* Ambient background gradient */
   background-image:
-    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(108,99,255,0.18) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 40% at 80% 110%, rgba(60,152,208,0.12) 0%, transparent 60%);
+    radial-gradient(ellipse 80% 50% at 20% -10%, var(--body-gradient-a) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 110%, var(--body-gradient-b) 0%, transparent 60%);
 }
 
 /* ─── Scrollbar (Webkit) ─────────────────────────────────────────────────────── */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 99px; }
-::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
+::-webkit-scrollbar-thumb { background: var(--scrollbar-thumb); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--scrollbar-thumb-hover); }
 
 /* ─── Typography ─────────────────────────────────────────────────────────────── */
 h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; letter-spacing: -0.03em; }
@@ -134,11 +170,14 @@ h3 { font-size: 1rem; font-weight: 600; }
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(15,17,26,0.75);
+  background: var(--header-bg);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-bottom: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid var(--header-border);
   padding: 0 1.5rem;
+  transition:
+    background var(--transition-base),
+    border-color var(--transition-base);
 }
 .header-inner {
   max-width: 1200px;
@@ -160,7 +199,7 @@ h3 { font-size: 1rem; font-weight: 600; }
 .logo-text {
   font-size: 1.25rem;
   font-weight: 800;
-  background: linear-gradient(135deg, #fff 30%, #a89ef0);
+  background: var(--logo-gradient);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

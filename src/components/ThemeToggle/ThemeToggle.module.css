@@ -1,0 +1,87 @@
+/* ─── Theme Toggle Button ────────────────────────────────────────────────────── */
+
+.toggle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.55rem;
+  border-radius: 99px;
+  border: 1px solid var(--border-glass);
+  background: var(--bg-glass);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  cursor: pointer;
+  transition:
+    background var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+  /* prevent text selection on double-click */
+  user-select: none;
+  -webkit-user-select: none;
+  /* ensure it never shrinks in the flex header */
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.toggle:hover {
+  background: var(--bg-glass-hover);
+  border-color: var(--accent);
+  box-shadow: 0 0 12px var(--accent-glow);
+}
+
+.toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* The sliding pill indicator */
+.track {
+  position: relative;
+  width: 44px;
+  height: 24px;
+  border-radius: 99px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-glass);
+  transition: background var(--transition-base);
+  flex-shrink: 0;
+}
+
+.thumb {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent-glow);
+  transition:
+    transform var(--transition-base),
+    background var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+/* When in light mode the thumb slides to the right */
+.thumbLight {
+  transform: translateX(20px);
+  background: #f5a623;
+  box-shadow: 0 0 10px rgba(245, 166, 35, 0.55);
+}
+
+/* Icon labels */
+.icon {
+  font-size: 1rem;
+  line-height: 1;
+  transition: opacity var(--transition-fast), transform var(--transition-base);
+}
+
+.iconActive {
+  opacity: 1;
+  transform: scale(1.15) rotate(0deg);
+}
+
+.iconInactive {
+  opacity: 0.4;
+  transform: scale(0.9);
+}
