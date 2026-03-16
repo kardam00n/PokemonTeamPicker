@@ -12,10 +12,11 @@
   border-left: 1px solid var(--border-glass);
   padding-left: 1.5rem;
   margin-left: 0.5rem;
+  flex: 1;
 }
 
 .desktopToggle {
-  margin-left: 1rem;
+  margin-left: auto;
 }
 
 .link {
@@ -54,8 +55,7 @@
   }
 
   /* Hide Desktop Items */
-  .desktopNav,
-  .desktopToggle {
+  .desktopNav {
     display: none;
   }
 
@@ -84,9 +84,11 @@
   .openHamburger span:nth-child(1) {
     transform: translateY(8px) rotate(45deg);
   }
+
   .openHamburger span:nth-child(2) {
     opacity: 0;
   }
+
   .openHamburger span:nth-child(3) {
     transform: translateY(-8px) rotate(-45deg);
   }
@@ -127,7 +129,8 @@
     z-index: 105;
     transform: translateX(100%);
     transition: transform var(--transition-base);
-    padding: 5rem 1.5rem 2rem 1.5rem; /* Space for hamburger at top */
+    padding: 5rem 1.5rem 2rem 1.5rem;
+    /* Space for hamburger at top */
   }
 
   .drawerOpen {
@@ -141,10 +144,15 @@
   }
 
   .drawerFooter {
+    width: 100%;
     margin-top: auto;
     padding-top: 1.5rem;
     border-top: 1px solid var(--border-glass);
     display: flex;
     justify-content: center;
+  }
+
+  .drawerFooter [class*="toggle"] {
+    margin-left: initial;
   }
 }

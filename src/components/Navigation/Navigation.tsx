@@ -41,12 +41,10 @@ export default function Navigation({ themeToggle }: NavigationProps) {
         >
           Type Analyzer
         </Link>
+        <div className={styles.desktopToggle}>
+          {themeToggle}
+        </div>
       </nav>
-
-      {/* Desktop Theme Toggle */}
-      <div className={styles.desktopToggle}>
-        {themeToggle}
-      </div>
 
       {/* Mobile Hamburger Button */}
       <button 
