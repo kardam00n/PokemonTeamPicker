@@ -21,6 +21,7 @@
 /build
 
 /public/data
+/debug
 
 # misc
 .DS_Store

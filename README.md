@@ -31,6 +31,7 @@ The application is hosted globally on Vercel for instant load times (SSG archite
 - **Framework**: `Next.js` (App Router)
 - **Language**: `TypeScript`
 - **Styling**: `Vanilla CSS` (CSS Modules + Global variables)
+- **Persistance**: Dual-mode storage (Client-side `localStorage` or Server-side `JSON` via Next.js Server Actions).
 - **Data Source**: Data is pulled from the official [PokéAPI](https://pokeapi.co/).
 - **Architecture (SSG)**: To achieve instant load times and reduce external API dependency on client devices, the application uses **Static Site Generation**. During the build process (`prebuild`), a custom script connects to PokéAPI, downloading data for all species, their types, sprites, and the comprehensive type effectiveness chart. This data is bundled organically as local JSON data maps which are served seamlessly and statically to the clients.
 
@@ -47,7 +48,7 @@ The Docker image is built using a multi-architecture process, meaning it runs na
 
 ### Quick Start with Docker Compose
 
-An example `docker-compose.yml` file is provided in this repository. You can simply copy this file to your machine or server.
+An example `docker-compose.yml` file is provided in this repository. To enable server-side persistence (so your team is saved on the server instead of just your browser), use the following configuration:
 
 ```yaml
 services:
@@ -59,10 +60,18 @@ services:
     restart: unless-stopped
     environment:
       - NODE_ENV=production
+      - APP_MODE=server        # Use 'server' for file-based persistence
+      - DATA_PATH=/app/data     # Path inside the container for data
+    volumes:
+      - ./poke-data:/app/data   # Mount a local folder for persistent storage
 ```
 
 **Environment Variables:**
-- `NODE_ENV=production`: Ensures the Next.js framework runs in optimized production mode for best performance.
+- `NODE_ENV=production`: Project optimization.
+- `APP_MODE`: 
+  - `local` (default): Saves data in the user's browser (`localStorage`).
+  - `server`: Saves data in a `team.json` file on the server (ideal for shared/hosted instances).
+- `DATA_PATH`: The directory where `team.json` will be stored (only relevant if `APP_MODE=server`).
 
 ### Running the container:
 1. Copy the code snippet above and save it anywhere as `docker-compose.yml`.
