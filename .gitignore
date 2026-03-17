@@ -21,6 +21,7 @@
 /build
 
 /public/data
+/data
 /debug
 
 # misc
